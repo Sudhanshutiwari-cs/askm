@@ -19,6 +19,7 @@ interface Booking {
   status: BookingStatus
   amount: number
   meet_link: string | null
+  therapist?: { first_name: string; last_name: string } | null
   therapists?: { first_name: string; last_name: string } | null
 }
 
@@ -48,10 +49,13 @@ export default function AdminBookingsPage() {
   }, [])
 
   const filtered = bookings.filter((b) => {
+    const t = b.therapist || b.therapists
+    const tName = t ? `${t.first_name} ${t.last_name}`.toLowerCase() : ''
     const matchesSearch =
       b.patient_name.toLowerCase().includes(search.toLowerCase()) ||
       b.patient_email.toLowerCase().includes(search.toLowerCase()) ||
-      b.booking_ref.toLowerCase().includes(search.toLowerCase())
+      b.booking_ref.toLowerCase().includes(search.toLowerCase()) ||
+      tName.includes(search.toLowerCase())
     const matchesStatus = statusFilter === 'all' || b.status === statusFilter
     return matchesSearch && matchesStatus
   })
@@ -92,7 +96,7 @@ export default function AdminBookingsPage() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input placeholder="Search by name, email or ref..." className="pl-9" value={search} onChange={(e) => setSearch(e.target.value)} />
               </div>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <Select value={statusFilter} onValueChange={(val) => setStatusFilter(val || 'all')}>
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="All statuses" />
                 </SelectTrigger>
@@ -127,50 +131,53 @@ export default function AdminBookingsPage() {
                         <td colSpan={7} className="px-4 py-10 text-center text-muted-foreground">No bookings found.</td>
                       </tr>
                     ) : (
-                      filtered.map((b) => (
-                        <tr key={b.id} className="hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{b.booking_ref}</td>
-                          <td className="px-4 py-3">
-                            <div className="font-medium text-foreground">{b.patient_name}</div>
-                            <div className="text-xs text-muted-foreground">{b.patient_email}</div>
-                          </td>
-                          <td className="px-4 py-3 text-foreground">
-                            {b.therapists ? `Dr. ${b.therapists.first_name} ${b.therapists.last_name}` : '—'}
-                          </td>
-                          <td className="px-4 py-3">
-                            <div className="text-foreground">{format(new Date(b.booking_date), 'MMM d, yyyy')}</div>
-                            <div className="text-xs text-muted-foreground">{b.start_time?.slice(0, 5)}</div>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium capitalize ${statusColors[b.status] ?? ''}`}>
-                              {b.status.replace('_', ' ')}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            {b.meet_link ? (
-                              <a href={`/meeting/${b.id}`} className="inline-flex items-center gap-1.5 text-primary text-xs font-medium hover:underline">
-                                <Video className="w-3.5 h-3.5" /> Join
-                              </a>
-                            ) : (
-                              <span className="text-xs text-muted-foreground">—</span>
-                            )}
-                          </td>
-                          <td className="px-4 py-3">
-                            <Select value={b.status} onValueChange={(val) => updateStatus(b.id, val)} disabled={updating === b.id}>
-                              <SelectTrigger className="h-7 text-xs w-32">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="pending">Pending</SelectItem>
-                                <SelectItem value="confirmed">Confirm</SelectItem>
-                                <SelectItem value="completed">Complete</SelectItem>
-                                <SelectItem value="cancelled">Cancel</SelectItem>
-                                <SelectItem value="no_show">No Show</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </td>
-                        </tr>
-                      ))
+                      filtered.map((b) => {
+                        const therapist = b.therapist || b.therapists
+                        return (
+                          <tr key={b.id} className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{b.booking_ref}</td>
+                            <td className="px-4 py-3">
+                              <div className="font-medium text-foreground">{b.patient_name}</div>
+                              <div className="text-xs text-muted-foreground">{b.patient_email}</div>
+                            </td>
+                            <td className="px-4 py-3 text-foreground">
+                              {therapist ? `Dr. ${therapist.first_name} ${therapist.last_name}` : '—'}
+                            </td>
+                            <td className="px-4 py-3">
+                              <div className="text-foreground">{format(new Date(b.booking_date), 'MMM d, yyyy')}</div>
+                              <div className="text-xs text-muted-foreground">{b.start_time?.slice(0, 5)}</div>
+                            </td>
+                            <td className="px-4 py-3">
+                              <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium capitalize ${statusColors[b.status] ?? ''}`}>
+                                {b.status.replace('_', ' ')}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3">
+                              {b.meet_link ? (
+                                <a href={`/meeting/${b.id}`} className="inline-flex items-center gap-1.5 text-primary text-xs font-medium hover:underline">
+                                  <Video className="w-3.5 h-3.5" /> Join
+                                </a>
+                              ) : (
+                                <span className="text-xs text-muted-foreground">—</span>
+                              )}
+                            </td>
+                            <td className="px-4 py-3">
+                              <Select value={b.status} onValueChange={(val) => { if (val) updateStatus(b.id, val) }} disabled={updating === b.id}>
+                                <SelectTrigger className="h-7 text-xs w-32">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="pending">Pending</SelectItem>
+                                  <SelectItem value="confirmed">Confirm</SelectItem>
+                                  <SelectItem value="completed">Complete</SelectItem>
+                                  <SelectItem value="cancelled">Cancel</SelectItem>
+                                  <SelectItem value="no_show">No Show</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </td>
+                          </tr>
+                        )
+                      })
                     )}
                   </tbody>
                 </table>
