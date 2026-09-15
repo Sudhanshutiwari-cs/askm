@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
+import { NewsletterForm } from '@/components/public/newsletter-form'
 import { Roboto_Slab, Nunito_Sans } from "next/font/google"
 
 const robotoSlab = Roboto_Slab({
@@ -430,16 +431,6 @@ function Header() {
 
 // Footer Component
 function Footer() {
-  const [email, setEmail] = useState('')
-  const [loading, setLoading] = useState(false)
-
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setEmail('')
-    setLoading(false)
-  }
-
   return (
     <footer className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16" style={{ backgroundColor: 'rgba(255, 253, 245, 0.9)' }}>
       <div className="mx-auto max-w-7xl">
@@ -476,13 +467,14 @@ function Footer() {
             <div>
               <h3 className="text-lg sm:text-xl font-serif font-black" style={{ color: colors.foreground }}>See what the buzz is about!</h3>
               <p className="mt-2 text-xs sm:text-sm" style={{ color: colors.mutedForeground }}>Sign up with your email to receive resources, event and clinic updates! 
-
 </p>
             </div>
-            <form onSubmit={handleSignup} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" required className="border-b px-0 py-2 text-sm bg-transparent flex-1" style={{ borderColor: 'rgba(26,26,26,0.3)', color: colors.foreground }} />
-              <button type="submit" disabled={loading} className="w-full sm:w-fit rounded-lg px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold lowercase transition-colors hover:opacity-90" style={{ backgroundColor: colors.primary, color: colors.secondary }}>{loading ? 'signing up...' : 'sign up'}</button>
-            </form>
+            <NewsletterForm
+              primaryColor={colors.primary}
+              secondaryColor={colors.secondary}
+              foregroundColor={colors.foreground}
+              layout="row"
+            />
           </div>
         </div>
         <div className="my-8 sm:my-12 border-t" style={{ borderColor: 'rgba(26,26,26,0.2)' }} />
