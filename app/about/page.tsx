@@ -395,17 +395,19 @@ export default function AstsankhlamPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh]">
+      <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] items-center">
         {/* Left column - sanctuary image */}
-        <div className="relative min-h-[40vh] sm:min-h-[50vh] lg:min-h-full overflow-hidden bg-gray-200">
-          <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
-            alt="Astsankhlam peaceful therapy sanctuary"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
+        <div className="flex items-center justify-center p-6 sm:p-8 lg:p-12 xl:p-14 w-full h-full" style={{ backgroundColor: 'rgba(102, 148, 138, 0.05)' }}>
+          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-[1092/1440] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-black/5 bg-[#f6f3eb]">
+            <Image
+              src="https://res.cloudinary.com/doficc2yl/image/upload/v1789452549/20260814_182755_0000.jpg_mv7oq3.jpg"
+              alt="Astsankhlam - Find the right support for your healing journey"
+              fill
+              priority
+              sizes="(max-width: 1024px) 95vw, 50vw"
+              className="object-contain"
+            />
+          </div>
         </div>
 
         {/* Right column - structured editorial content */}
@@ -505,13 +507,13 @@ export default function AstsankhlamPage() {
 
           {/* Right column - portrait */}
           <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-xl aspect-square rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-xl">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-[2/3] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-2xl border border-black/5 bg-[#f6f3eb]">
               <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+                src="https://res.cloudinary.com/doficc2yl/image/upload/v1789452617/Untitled_design_20260814_113529_0000.jpg_zbjc7s.jpg"
                 alt="Dipanita Biswas - Founder of Astsankhlam"
                 fill
-                sizes="(max-width: 640px) 100vw, 600px"
-                className="object-cover"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 450px, 520px"
+                className="object-contain"
               />
             </div>
           </div>
