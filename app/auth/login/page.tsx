@@ -483,6 +483,20 @@ function LoginForm() {
             </p>
           )}
 
+          {/* Practitioner note for therapists */}
+          {activePortal === 'therapist' && (
+            <p className="mt-6 text-center text-xs text-[#1a1a1a]/60">
+              Therapist accounts are provisioned exclusively by clinic administrators.{' '}
+              <button
+                type="button"
+                onClick={() => setShowForgotPasswordNote(true)}
+                className="text-[#66948a] font-semibold hover:underline"
+              >
+                Need credentials?
+              </button>
+            </p>
+          )}
+
           {/* Security Notice Footnote */}
           <div className="mt-8 pt-4 border-t border-black/5 text-center">
             <p className="text-[11px] text-[#1a1a1a]/50 flex items-center justify-center gap-1.5">

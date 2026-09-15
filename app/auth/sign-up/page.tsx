@@ -105,6 +105,11 @@ export default function SignUpPage() {
             Sign in
           </Link>
         </p>
+
+        <div className="mt-4 rounded-lg bg-muted/60 border border-border p-3 text-center text-xs text-muted-foreground">
+          <p className="font-semibold text-foreground mb-0.5">Are you a therapist or practitioner?</p>
+          Therapist accounts cannot be registered here. They are created exclusively from the clinic admin portal. Contact clinic management for access.
+        </div>
       </div>
     </div>
   )
