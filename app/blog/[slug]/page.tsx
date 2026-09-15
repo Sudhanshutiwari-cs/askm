@@ -1,13 +1,24 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, ArrowRight, Clock, User, Calendar, Search, Loader2, BookOpen } from 'lucide-react'
+import { useParams } from 'next/navigation'
+import {
+  Menu,
+  X,
+  ArrowLeft,
+  Clock,
+  User,
+  Calendar,
+  Loader2,
+  Share2,
+  Check,
+  BookOpen,
+} from 'lucide-react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import type { Blog } from '@/types/blog'
 
-// STRICT COLOR PALETTE
 const colors = {
   primary: '#66948a',
   secondary: '#fffdf5',
@@ -15,11 +26,9 @@ const colors = {
   mutedForeground: 'rgba(26, 26, 26, 0.7)',
 }
 
-// Fallback image in case featured_image is null or broken
 const DEFAULT_FEATURED_IMAGE =
   'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80'
 
-// SVG Icons
 function InstagramIcon({ size = 20 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -173,18 +182,8 @@ function Header() {
 }
 
 function Footer() {
-  const [email, setEmail] = useState('')
-  const [loading, setLoading] = useState(false)
-
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setEmail('')
-    setLoading(false)
-  }
-
   return (
-    <footer className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16" style={{ backgroundColor: 'rgba(255, 253, 245, 0.9)' }}>
+    <footer className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 mt-auto" style={{ backgroundColor: 'rgba(255, 253, 245, 0.9)' }}>
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 sm:gap-12 md:grid-cols-3 lg:gap-16">
           <div className="flex flex-col gap-6 sm:gap-8 items-center md:items-start">
@@ -200,7 +199,6 @@ function Footer() {
               </div>
               <span className="font-serif text-lg sm:text-xl font-bold" style={{ color: colors.primary }}>Astsankhlam</span>
             </div>
-
             <div className="flex gap-2">
               <a
                 href="https://instagram.com"
@@ -267,66 +265,22 @@ function Footer() {
           </div>
 
           <div className="flex flex-col gap-4 sm:gap-6">
-            <div>
-              <h3 className="text-lg sm:text-xl font-serif font-black" style={{ color: colors.foreground }}>
-                Stay Mindful & Connected
-              </h3>
-              <p className="mt-2 text-xs sm:text-sm" style={{ color: colors.mutedForeground }}>
-                Sign up with your email to receive mindfulness resources, wellness reflections, and clinic updates.
-              </p>
-            </div>
-            <form onSubmit={handleSignup} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email Address"
-                required
-                className="border-b px-0 py-2 text-sm focus:outline-none focus:ring-0 bg-transparent flex-1"
-                style={{ borderColor: 'rgba(26, 26, 26, 0.3)', color: colors.foreground }}
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full sm:w-fit rounded-lg px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold lowercase transition-colors hover:opacity-90 disabled:opacity-50"
-                style={{ backgroundColor: colors.primary, color: colors.secondary }}
-              >
-                {loading ? 'signing up...' : 'sign up'}
-              </button>
-            </form>
+            <h3 className="text-lg sm:text-xl font-serif font-black" style={{ color: colors.foreground }}>
+              Astsankhlam Journal
+            </h3>
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: colors.mutedForeground }}>
+              Dedicated to exploring the intersections of mindfulness, psychotherapy, and yogic science.
+            </p>
           </div>
         </div>
 
         <div className="my-8 sm:my-12 border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.2)' }} />
 
-        <div className="flex flex-col items-center gap-4 sm:gap-6 py-6 sm:py-8">
-          <p className="text-center text-xs sm:text-sm font-semibold uppercase tracking-widest" style={{ color: colors.primary }}>
-            Restore Your Mind. Reconnect With Yourself. Rediscover Balance.
-          </p>
-          <Link
-            href="/book"
-            className="rounded-lg px-6 sm:px-8 py-3 sm:py-4 text-sm font-semibold lowercase transition-colors hover:opacity-90 inline-block"
-            style={{ backgroundColor: colors.primary, color: colors.secondary }}
-          >
-            book now
-          </Link>
-        </div>
-
-        <div className="my-8 sm:my-12 border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.2)' }} />
-
         <div className="space-y-4 sm:space-y-6 text-center">
-          <p className="text-[10px] sm:text-xs leading-relaxed px-2" style={{ color: colors.mutedForeground }}>
-            Astsankhlam is a holistic wellness initiative founded by Dipanita Biswas, dedicated to helping individuals nurture their mental, emotional, physical, and spiritual well-being through integrated psychological therapy and yogic practices.
-          </p>
-
           <p className="text-[10px] sm:text-xs" style={{ color: colors.mutedForeground }}>
             © 2026 Astsankhlam | Founded by{' '}
             <Link href="/about" className="hover:underline" style={{ color: colors.primary }}>
               Dipanita Biswas
-            </Link>{' '}
-            | Holistic Wellness Initiative |{' '}
-            <Link href="/services" className="hover:underline" style={{ color: colors.primary }}>
-              Healing & Balance
             </Link>
           </p>
         </div>
@@ -348,245 +302,271 @@ function formatDate(dateStr: string) {
   }
 }
 
-export default function BlogPage() {
-  const [blogs, setBlogs] = useState<Blog[]>([])
+export default function BlogPostPage() {
+  const params = useParams()
+  const slug = params?.slug as string
+
+  const [blog, setBlog] = useState<Blog | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    async function fetchBlogs() {
+    if (!slug) return
+
+    async function fetchBlog() {
       try {
         setLoading(true)
         setError(null)
-        const response = await fetch('/api/blogs')
-        const data = await response.json()
+        const res = await fetch(`/api/blogs/${encodeURIComponent(slug)}`)
+        const data = await res.json()
 
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch blogs')
+        if (!res.ok) {
+          throw new Error(data.error || 'Blog not found')
         }
 
-        setBlogs(data.blogs || [])
+        setBlog(data.blog)
       } catch (err) {
-        console.error('Failed to load blogs:', err)
-        setError(err instanceof Error ? err.message : 'Failed to load blogs')
+        console.error('Error fetching blog:', err)
+        setError(err instanceof Error ? err.message : 'Blog not found')
       } finally {
         setLoading(false)
       }
     }
 
-    fetchBlogs()
-  }, [])
+    fetchBlog()
+  }, [slug])
 
-  // Dynamic category list derived from blogs in DB
-  const categories = useMemo(() => {
-    const unique = Array.from(new Set(blogs.map((b) => b.category).filter(Boolean)))
-    // Default categories to show even if DB is still seeding
-    const defaults = ['Therapy & Counseling', 'Yoga for Mental Health', 'Chakra Healing', 'Mindfulness & Meditation']
-    const combined = Array.from(new Set([...defaults, ...unique]))
-    return ['All', ...combined]
-  }, [blogs])
+  const handleShare = async () => {
+    if (typeof window === 'undefined') return
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(window.location.href)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2500)
+      }
+    } catch {
+      // ignore clipboard write failure
+    }
+  }
 
-  const filteredBlogs = useMemo(() => {
-    return blogs.filter((blog) => {
-      const matchesCategory = selectedCategory === 'All' || blog.category === selectedCategory
-      const query = searchQuery.trim().toLowerCase()
-      if (!query) return matchesCategory
+  if (loading) {
+    return (
+      <div className="w-full min-h-screen flex flex-col" style={{ backgroundColor: colors.secondary }}>
+        <Header />
+        <div className="flex-1 flex flex-col items-center justify-center py-32 gap-4">
+          <Loader2 className="w-8 h-8 animate-spin" style={{ color: colors.primary }} />
+          <p className="text-sm font-medium" style={{ color: colors.mutedForeground }}>
+            Loading reflection...
+          </p>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 
-      const matchesSearch =
-        blog.title.toLowerCase().includes(query) ||
-        (blog.excerpt && blog.excerpt.toLowerCase().includes(query)) ||
-        blog.author_name.toLowerCase().includes(query) ||
-        (blog.content && blog.content.toLowerCase().includes(query))
+  if (error || !blog) {
+    return (
+      <div className="w-full min-h-screen flex flex-col" style={{ backgroundColor: colors.secondary }}>
+        <Header />
+        <div className="flex-1 max-w-2xl mx-auto px-4 py-24 text-center">
+          <BookOpen className="w-12 h-12 mx-auto mb-4 opacity-40" style={{ color: colors.primary }} />
+          <h1 className="font-serif text-3xl font-bold mb-3" style={{ color: colors.foreground }}>
+            Reflection Not Found
+          </h1>
+          <p className="text-sm mb-6" style={{ color: colors.mutedForeground }}>
+            The reflection you are looking for does not exist or may have been archived.
+          </p>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: colors.primary }}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to All Reflections
+          </Link>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 
-      return matchesCategory && matchesSearch
-    })
-  }, [blogs, selectedCategory, searchQuery])
+  const featuredImage = blog.featured_image || DEFAULT_FEATURED_IMAGE
 
   return (
     <div className="w-full min-h-screen flex flex-col" style={{ backgroundColor: colors.secondary }}>
       <Header />
 
-      {/* Hero Section */}
-      <section className="px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-20 sm:pb-16 text-center">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em]" style={{ color: colors.primary }}>
-            Astsankhlam Journal
-          </p>
-          <h1 className="mt-4 font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-balance" style={{ color: colors.foreground }}>
-            Reflections on <span style={{ color: colors.primary }}>Mind, Body & Spirit</span>
-          </h1>
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: colors.mutedForeground }}>
-            Insights, yogic wisdom, and psychological perspectives by Dipanita Biswas and the Astsankhlam team to accompany your journey toward balance.
-          </p>
+      <main className="flex-1">
+        {/* Article Header */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
+          {/* Breadcrumbs & Back Link */}
+          <div className="flex items-center justify-between mb-6">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider hover:opacity-80 transition-opacity"
+              style={{ color: colors.primary }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              All Reflections
+            </Link>
 
-          {/* Search bar */}
-          <div className="mt-8 sm:mt-10 relative max-w-md mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: colors.primary }} />
-            <input
-              type="text"
-              placeholder="Search reflections, practices, topics..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 text-sm rounded-full border bg-white/80 focus:outline-none focus:ring-2 shadow-sm transition-all"
-              style={{ borderColor: 'rgba(102, 148, 138, 0.3)', color: colors.foreground }}
+            <button
+              type="button"
+              onClick={handleShare}
+              className="inline-flex items-center gap-1.5 text-xs rounded-full px-3 py-1.5 border border-black/10 hover:bg-black/5 transition-colors"
+              style={{ color: colors.foreground }}
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Share2 className="w-3.5 h-3.5" />}
+              {copied ? 'Link Copied' : 'Share'}
+            </button>
+          </div>
+
+          {/* Category & Read Time */}
+          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: colors.primary }}>
+            <span className="px-3 py-1 rounded-full bg-white border border-black/5 shadow-xs">
+              {blog.category}
+            </span>
+            <span className="flex items-center gap-1 font-normal lowercase tracking-normal" style={{ color: colors.mutedForeground }}>
+              <Clock className="w-3.5 h-3.5" />
+              {blog.read_time} min read
+            </span>
+          </div>
+
+          {/* Title */}
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-balance mb-6" style={{ color: colors.foreground }}>
+            {blog.title}
+          </h1>
+
+          {/* Author & Date */}
+          <div className="flex items-center gap-4 py-4 border-y border-black/10 text-xs sm:text-sm" style={{ color: colors.mutedForeground }}>
+            <div className="flex items-center gap-2">
+              {blog.author_image ? (
+                <div className="relative w-8 h-8 rounded-full overflow-hidden">
+                  <Image src={blog.author_image} alt={blog.author_name} fill className="object-cover" />
+                </div>
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center">
+                  <User className="w-4 h-4" style={{ color: colors.primary }} />
+                </div>
+              )}
+              <span className="font-medium text-black">{blog.author_name}</span>
+            </div>
+            <span>•</span>
+            <span className="flex items-center gap-1.5">
+              <Calendar className="w-4 h-4" />
+              {formatDate(blog.published_at)}
+            </span>
+          </div>
+        </div>
+
+        {/* Featured Image */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-8 sm:my-10">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-gray-100 shadow-md">
+            <Image
+              src={featuredImage}
+              alt={blog.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 896px"
+              className="object-cover"
             />
           </div>
+        </div>
 
-          {/* Category Filter Pills */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-all ${
-                  selectedCategory === cat ? 'shadow-sm text-white' : 'hover:bg-black/5'
-                }`}
-                style={{
-                  backgroundColor: selectedCategory === cat ? colors.primary : 'transparent',
-                  color: selectedCategory === cat ? colors.secondary : colors.foreground,
-                  border: `1px solid ${selectedCategory === cat ? colors.primary : 'rgba(26, 26, 26, 0.15)'}`,
-                }}
-              >
-                {cat}
-              </button>
-            ))}
+        {/* Excerpt Lead */}
+        {blog.excerpt && (
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <p className="text-lg sm:text-xl font-serif italic leading-relaxed pl-4 border-l-4" style={{ borderColor: colors.primary, color: colors.foreground }}>
+              {blog.excerpt}
+            </p>
           </div>
-        </div>
-      </section>
+        )}
 
-      {/* Articles Grid Section */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28 flex-1">
-        <div className="mx-auto max-w-6xl">
-          {/* Loading State */}
-          {loading && (
-            <div className="py-20 flex flex-col items-center justify-center gap-3">
-              <Loader2 className="w-8 h-8 animate-spin" style={{ color: colors.primary }} />
-              <p className="text-sm font-medium" style={{ color: colors.mutedForeground }}>
-                Loading reflections from database...
-              </p>
-            </div>
-          )}
+        {/* Content Body */}
+        <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+          <div className="space-y-6 text-base sm:text-lg leading-relaxed font-sans" style={{ color: 'rgba(26, 26, 26, 0.88)' }}>
+            {blog.content.split('\n\n').map((paragraph, idx) => {
+              const trimmed = paragraph.trim()
+              if (!trimmed) return null
 
-          {/* Error State */}
-          {!loading && error && (
-            <div className="text-center py-16 bg-white/60 border border-red-200 rounded-2xl p-8 max-w-md mx-auto">
-              <p className="text-base font-semibold text-red-600 mb-2">Unable to load reflections</p>
-              <p className="text-xs text-gray-500 mb-4">{error}</p>
-              <button
-                type="button"
-                onClick={() => window.location.reload()}
-                className="rounded-lg px-5 py-2 text-xs font-semibold uppercase tracking-wider text-white"
-                style={{ backgroundColor: colors.primary }}
-              >
-                Retry
-              </button>
-            </div>
-          )}
-
-          {/* Empty State */}
-          {!loading && !error && filteredBlogs.length === 0 && (
-            <div className="text-center py-16 bg-white/60 rounded-2xl border border-black/5 p-8 max-w-lg mx-auto">
-              <BookOpen className="w-10 h-10 mx-auto mb-3 opacity-40" style={{ color: colors.primary }} />
-              <p className="text-base sm:text-lg font-medium" style={{ color: colors.foreground }}>
-                No reflections found matching your search.
-              </p>
-              <p className="text-xs mt-1" style={{ color: colors.mutedForeground }}>
-                Try adjusting your search terms or category filter.
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedCategory('All')
-                  setSearchQuery('')
-                }}
-                className="mt-4 text-sm font-semibold underline"
-                style={{ color: colors.primary }}
-              >
-                Clear filters
-              </button>
-            </div>
-          )}
-
-          {/* Articles Grid */}
-          {!loading && !error && filteredBlogs.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-              {filteredBlogs.map((article) => {
-                const articleImage = article.featured_image || DEFAULT_FEATURED_IMAGE
+              // Subheading ###
+              if (trimmed.startsWith('### ')) {
                 return (
-                  <article
-                    key={article.id}
-                    className="flex flex-col rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-all border border-black/5 group"
-                  >
-                    <Link
-                      href={`/blog/${article.slug}`}
-                      className="relative aspect-[16/10] w-full mb-5 overflow-hidden rounded-xl bg-gray-100 -mt-1 block"
-                    >
-                      <Image
-                        src={articleImage}
-                        alt={article.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </Link>
-
-                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: colors.primary }}>
-                      <span>{article.category}</span>
-                      <span className="flex items-center gap-1 font-normal lowercase tracking-normal" style={{ color: colors.mutedForeground }}>
-                        <Clock className="w-3.5 h-3.5" />
-                        {article.read_time} min read
-                      </span>
-                    </div>
-
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold leading-snug mb-3 group-hover:opacity-80 transition-opacity">
-                      <Link href={`/blog/${article.slug}`} style={{ color: colors.foreground }}>
-                        {article.title}
-                      </Link>
-                    </h2>
-
-                    <p className="text-xs sm:text-sm leading-relaxed flex-1 mb-6 line-clamp-3" style={{ color: colors.mutedForeground }}>
-                      {article.excerpt || article.content.slice(0, 150) + '...'}
-                    </p>
-
-                    <div className="pt-4 border-t border-black/5 flex items-center justify-between text-xs" style={{ color: colors.mutedForeground }}>
-                      <span className="flex items-center gap-1.5">
-                        {article.author_image ? (
-                          <div className="relative w-4 h-4 rounded-full overflow-hidden">
-                            <Image src={article.author_image} alt={article.author_name} fill className="object-cover" />
-                          </div>
-                        ) : (
-                          <User className="w-3.5 h-3.5" style={{ color: colors.primary }} />
-                        )}
-                        <span className="truncate max-w-[120px]">{article.author_name}</span>
-                      </span>
-                      <span className="flex items-center gap-1.5 whitespace-nowrap">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {formatDate(article.published_at)}
-                      </span>
-                    </div>
-
-                    <div className="mt-4 pt-2">
-                      <Link
-                        href={`/blog/${article.slug}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider hover:underline"
-                        style={{ color: colors.primary }}
-                      >
-                        Read reflection
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </article>
+                  <h3 key={idx} className="font-serif text-2xl font-bold pt-4 pb-1" style={{ color: colors.foreground }}>
+                    {trimmed.replace(/^###\s+/, '')}
+                  </h3>
                 )
-              })}
-            </div>
-          )}
-        </div>
-      </section>
+              }
 
-      {/* Call to action Banner */}
+              // Subheading ##
+              if (trimmed.startsWith('## ')) {
+                return (
+                  <h2 key={idx} className="font-serif text-2xl sm:text-3xl font-bold pt-6 pb-2" style={{ color: colors.foreground }}>
+                    {trimmed.replace(/^##\s+/, '')}
+                  </h2>
+                )
+              }
+
+              // Unordered list
+              if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+                const items = trimmed.split('\n').filter(Boolean)
+                return (
+                  <ul key={idx} className="space-y-2 pl-5 list-disc marker:text-[#66948a]">
+                    {items.map((item, itemIdx) => {
+                      const cleanItem = item.replace(/^[-*]\s+/, '')
+                      return <li key={itemIdx} dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(cleanItem) }} />
+                    })}
+                  </ul>
+                )
+              }
+
+              // Numbered list
+              if (/^\d+\.\s+/.test(trimmed)) {
+                const items = trimmed.split('\n').filter(Boolean)
+                return (
+                  <ol key={idx} className="space-y-2 pl-5 list-decimal marker:text-[#66948a] font-medium">
+                    {items.map((item, itemIdx) => {
+                      const cleanItem = item.replace(/^\d+\.\s+/, '')
+                      return (
+                        <li key={itemIdx} className="font-normal" dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(cleanItem) }} />
+                      )
+                    })}
+                  </ol>
+                )
+              }
+
+              // Regular paragraph
+              return (
+                <p key={idx} dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(trimmed) }} />
+              )
+            })}
+          </div>
+
+          {/* Bottom Actions */}
+          <div className="mt-12 pt-8 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider hover:underline"
+              style={{ color: colors.primary }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Return to reflections
+            </Link>
+
+            <button
+              type="button"
+              onClick={handleShare}
+              className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider border border-black/10 hover:bg-black/5 transition-colors"
+            >
+              {copied ? <Check className="w-4 h-4 text-green-600" /> : <Share2 className="w-4 h-4" />}
+              {copied ? 'Link Copied to Clipboard' : 'Share this Reflection'}
+            </button>
+          </div>
+        </article>
+      </main>
+
+      {/* CTA Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center" style={{ backgroundColor: colors.primary }}>
         <div className="mx-auto max-w-3xl text-white">
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
@@ -616,4 +596,12 @@ export default function BlogPage() {
       <Footer />
     </div>
   )
+}
+
+function formatInlineMarkdown(text: string): string {
+  // Bold **text**
+  let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  // Italic *text*
+  formatted = formatted.replace(/\*(.*?)\*/g, '<em>$1</em>')
+  return formatted
 }
