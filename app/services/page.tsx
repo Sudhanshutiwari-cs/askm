@@ -381,7 +381,7 @@ function Header() {
           {/* Desktop Right Section */}
           <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             <div className="flex items-center gap-3 xl:gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
+              <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
                 <InstagramIcon size={20} />
               </a>
               <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
@@ -413,7 +413,7 @@ function Header() {
               <Link href="/careers" className="text-sm font-medium py-2" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>careers</Link>
               <Link href="/blog" className="text-sm font-medium py-2" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>blog</Link>
               <div className="flex items-center gap-4 pt-3 border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.1)' }}>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: colors.foreground }}><InstagramIcon size={20} /></a>
+                <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: colors.foreground }}><InstagramIcon size={20} /></a>
                 <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ color: colors.foreground }}><LinkedInIcon size={20} /></a>
                 <a href="mailto:hello@astsankhlam.com" aria-label="Email" style={{ color: colors.foreground }}><EmailIcon size={20} /></a>
               </div>
@@ -443,7 +443,7 @@ function Footer() {
               <span className="font-serif text-lg sm:text-xl font-bold" style={{ color: colors.primary }}>Astsankhlam</span>
             </div>
             <div className="flex gap-2">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="Instagram" style={{ backgroundColor: colors.primary, color: colors.secondary }}><InstagramIcon size={16} /></a>
+              <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="Instagram" style={{ backgroundColor: colors.primary, color: colors.secondary }}><InstagramIcon size={16} /></a>
               <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="TikTok" style={{ backgroundColor: colors.primary, color: colors.secondary }}><TikTokIcon size={16} /></a>
               <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="LinkedIn" style={{ backgroundColor: colors.primary, color: colors.secondary }}><LinkedInIcon size={16} /></a>
             </div>

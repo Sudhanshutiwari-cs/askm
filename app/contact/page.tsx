@@ -117,7 +117,7 @@ function Header() {
           <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             <div className="flex items-center gap-3 xl:gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/astsankhlam/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -186,7 +186,7 @@ function Header() {
                 blog
               </Link>
               <div className="flex items-center gap-4 pt-3 border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.1)' }}>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
+                <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
                   <InstagramIcon size={20} />
                 </a>
                 <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
@@ -326,7 +326,7 @@ function LocationContactSection() {
 
           {/* Social Icons */}
           <div className="flex items-center gap-5 mt-4">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-70 transition-opacity">
+            <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-70 transition-opacity">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke={colors.primary} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -598,7 +598,7 @@ function Footer() {
 
             <div className="flex gap-2">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/astsankhlam/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90 transition-opacity"
