@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
+import { useHeroImage } from '@/lib/hooks/use-hero-image'
 import { Roboto_Slab, Nunito_Sans } from "next/font/google"
 
 const robotoSlab = Roboto_Slab({
@@ -492,6 +493,11 @@ function Footer() {
 }
 
 export default function AstsankhlamPage() {
+  const { imageUrl: heroImageUrl, altText: heroAltText } = useHeroImage(
+    'services',
+    'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=80'
+  )
+
   return (
     <div className="w-full" style={{ backgroundColor: colors.secondary }}>
       <Header />
@@ -505,8 +511,8 @@ export default function AstsankhlamPage() {
             <div className="relative z-10 w-full max-w-[620px] lg:max-w-[640px] lg:translate-x-12">
               <div className="relative h-[350px] sm:h-[450px] md:h-[560px] lg:h-[680px] w-full overflow-hidden rounded-md shadow-md">
                 <Image
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=80"
-                  alt="Therapy and compassionate counseling session"
+                  src={heroImageUrl}
+                  alt={heroAltText || "Therapy and compassionate counseling session"}
                   fill
                   sizes="(max-width: 1024px) 100vw, 640px"
                   className="object-cover"

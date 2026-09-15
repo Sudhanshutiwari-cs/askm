@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
 import { ReelsGallery } from '@/components/public/reels-gallery'
+import { useHeroImage } from '@/lib/hooks/use-hero-image'
 
 // STRICT COLOR PALETTE
 const colors = {
@@ -649,6 +650,11 @@ function Footer() {
 }
 
 export default function AstsankhlamPage() {
+  const { imageUrl, altText } = useHeroImage(
+    'contact',
+    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80'
+  )
+
   return (
     <div className="w-full" style={{ backgroundColor: colors.secondary }}>
       {/* Header */}
@@ -659,8 +665,8 @@ export default function AstsankhlamPage() {
         {/* Left column - image */}
         <div className="relative min-h-[40vh] sm:min-h-[50vh] lg:min-h-full overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
-            alt="Astsankhlam sanctuary"
+            src={imageUrl}
+            alt={altText || "Astsankhlam sanctuary"}
             fill
             className="absolute inset-0 object-cover"
             priority

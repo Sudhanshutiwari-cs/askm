@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
 import { ReelsGallery } from '@/components/public/reels-gallery'
+import { useHeroImage } from '@/lib/hooks/use-hero-image'
 
 // STRICT COLOR PALETTE
 const colors = {
@@ -372,6 +373,11 @@ function Footer() {
 }
 
 export default function AstsankhlamPage() {
+  const { imageUrl: heroImageUrl, altText: heroAltText } = useHeroImage(
+    'about',
+    'https://res.cloudinary.com/doficc2yl/image/upload/v1789452549/20260814_182755_0000.jpg_mv7oq3.jpg'
+  )
+
   return (
     <div className="w-full" style={{ backgroundColor: colors.secondary }}>
       {/* Header */}
@@ -382,8 +388,8 @@ export default function AstsankhlamPage() {
         {/* Left column - hero image */}
         <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[580px] overflow-hidden bg-[#f6f3eb]">
           <Image
-            src="https://res.cloudinary.com/doficc2yl/image/upload/v1789452549/20260814_182755_0000.jpg_mv7oq3.jpg"
-            alt="Astsankhlam - Find the right support for your healing journey"
+            src={heroImageUrl}
+            alt={heroAltText || "Astsankhlam - Find the right support for your healing journey"}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"

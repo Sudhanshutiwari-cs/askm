@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
 import { ReelsGallery } from '@/components/public/reels-gallery'
+import { useHeroImage } from '@/lib/hooks/use-hero-image'
 
 // SVG components for social media icons
 const FacebookIcon = ({ size = 20, className = "" }) => (
@@ -421,6 +422,11 @@ function Footer() {
 }
 
 export default function AstsankhlamPage() {
+  const { imageUrl: heroImageUrl, altText: heroAltText } = useHeroImage(
+    'home',
+    'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=80'
+  )
+
   return (
     <div className="w-full min-h-screen" style={{ backgroundColor: colors.secondary }}>
       <Header />
@@ -431,8 +437,8 @@ export default function AstsankhlamPage() {
           {/* Left: image */}
           <div className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-auto min-h-[300px] sm:min-h-[400px] bg-gray-200 order-2 lg:order-1">
             <Image
-              src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=80"
-              alt="Astsankhlam - Holistic Wellness & Healing"
+              src={heroImageUrl}
+              alt={heroAltText || "Astsankhlam - Holistic Wellness & Healing"}
               fill
               priority
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"

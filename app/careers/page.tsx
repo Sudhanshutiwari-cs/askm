@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
 import { ReelsGallery } from '@/components/public/reels-gallery'
+import { useHeroImage } from '@/lib/hooks/use-hero-image'
 import type { CSSProperties } from "react"
 
 // STRICT COLOR PALETTE
@@ -448,6 +449,12 @@ function Footer() {
 
 // Careers Page Content Component
 function CareersContent() {
+  const { imageUrl, secondaryImageUrl, altText } = useHeroImage(
+    'careers',
+    'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80'
+  )
+
   const bgStyle: CSSProperties = {
     backgroundColor: colors.secondary,
     backgroundImage: patternUrl,
@@ -552,15 +559,15 @@ function CareersContent() {
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <div className="relative h-[300px] sm:h-[380px] md:h-[480px] w-full rounded-sm overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80"
-                  alt="Mindful Therapy Session"
+                  src={imageUrl}
+                  alt={altText || "Mindful Therapy Session"}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="relative h-[300px] sm:h-[380px] md:h-[480px] w-full rounded-sm overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"
+                  src={secondaryImageUrl || "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"}
                   alt="Holistic Healing and Meditation"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
