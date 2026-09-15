@@ -736,19 +736,6 @@ export default function AstsankhlamPage() {
             className="absolute inset-0 object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/20" />
-
-          {/* Overlapping card */}
-          <div className="relative z-10 flex h-full items-center justify-center p-6 sm:p-8 lg:justify-end lg:pr-0">
-            <div className="w-[85%] sm:w-[80%] max-w-[480px] translate-y-0 lg:translate-x-[15%] relative aspect-[4/5] overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] rounded-tr-none shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
-                alt="Astsankhlam team and community"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
         </div>
 
         {/* Right column - structured editorial content */}
