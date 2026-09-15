@@ -225,6 +225,8 @@ function LocationContactSection() {
     subject: "",
     message: "",
   })
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -235,11 +237,57 @@ function LocationContactSection() {
         ? target.checked
         : target.value
     setForm((prev) => ({ ...prev, [target.name]: value }))
+    if (status) setStatus(null)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", form)
+    setLoading(true)
+    setStatus(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: form.firstName,
+          last_name: form.lastName,
+          email: form.email,
+          newsletter_opt_in: form.newsletter,
+          subject: form.subject,
+          message: form.message,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok || data.error) {
+        setStatus({
+          type: 'error',
+          message: data.error || 'Failed to send your message. Please try again.',
+        })
+      } else {
+        setStatus({
+          type: 'success',
+          message: data.message || 'Thank you! Your message has been sent successfully.',
+        })
+        setForm({
+          firstName: '',
+          lastName: '',
+          email: '',
+          newsletter: false,
+          subject: '',
+          message: '',
+        })
+      }
+    } catch {
+      setStatus({
+        type: 'error',
+        message: 'Something went wrong. Please check your connection and try again.',
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -429,14 +477,28 @@ function LocationContactSection() {
               />
             </div>
 
+            {/* Status Feedback */}
+            {status && (
+              <div
+                className={`p-3.5 rounded-lg text-sm transition-all ${
+                  status.type === 'success'
+                    ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                    : 'bg-red-50 text-red-800 border border-red-200'
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
+
             {/* Submit */}
             <div>
               <button
                 type="submit"
-                className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm font-medium hover:opacity-90 active:opacity-80 transition-opacity"
+                disabled={loading}
+                className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm font-medium hover:opacity-90 active:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ backgroundColor: colors.primary, color: colors.secondary }}
               >
-                submit
+                {loading ? 'submitting...' : 'submit'}
               </button>
             </div>
 

@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
   LayoutDashboard, Users, CalendarCheck, Settings,
-  LogOut, Heart, BarChart3, Menu, X, ChevronRight, BookOpen, Mail,
+  LogOut, Heart, BarChart3, Menu, X, ChevronRight, BookOpen, Mail, MessageSquare,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
@@ -19,6 +19,7 @@ const nav = [
   { label: 'Therapists', href: '/admin/therapists', icon: Users },
   { label: 'Patients', href: '/admin/patients', icon: Heart },
   { label: 'Blogs', href: '/admin/blogs', icon: BookOpen },
+  { label: 'Messages', href: '/admin/messages', icon: MessageSquare },
   { label: 'Newsletter', href: '/admin/newsletter', icon: Mail },
   { label: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
