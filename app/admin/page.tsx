@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
-import { Bell, Users, Calendar, UserCheck, TrendingUp, type LucideIcon } from 'lucide-react'
+import Link from 'next/link'
+import { Bell, Users, Calendar, UserCheck, TrendingUp, Mail, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -35,12 +36,13 @@ const statusColors: Record<string, string> = {
   rescheduled: 'bg-purple-100 text-purple-800',
 }
 
-function StatCard({ title, value, subtitle, icon: Icon, color }: { title: string; value: string | number; subtitle?: string; icon: LucideIcon; color: 'blue' | 'green' | 'amber' | 'purple' }) {
+function StatCard({ title, value, subtitle, icon: Icon, color }: { title: string; value: string | number; subtitle?: string; icon: LucideIcon; color: 'blue' | 'green' | 'amber' | 'purple' | 'teal' }) {
   const colorMap = {
     blue: 'bg-[#66948a]/10 text-[#66948a]',
     green: 'bg-green-100 text-green-700',
     amber: 'bg-amber-100 text-amber-700',
     purple: 'bg-purple-100 text-purple-700',
+    teal: 'bg-emerald-100 text-emerald-700',
   }
   return (
     <div className="bg-card rounded-xl border border-border p-5">
@@ -58,18 +60,23 @@ export default function AdminDashboard() {
   const [bookings, setBookings] = useState<Booking[]>([])
   const [therapists, setTherapists] = useState<Therapist[]>([])
   const [patientCount, setPatientCount] = useState(0)
+  const [newsletterStats, setNewsletterStats] = useState<{ total: number; active: number }>({ total: 0, active: 0 })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function load() {
-      const [bookingsRes, patientsRes] = await Promise.all([
-        fetch('/api/admin/bookings').then((r) => r.json()),
-        fetch('/api/admin/patients').then((r) => r.json()),
+      const [bookingsRes, patientsRes, therapistsRes, newsletterRes] = await Promise.all([
+        fetch('/api/admin/bookings').then((r) => r.json()).catch(() => ({})),
+        fetch('/api/admin/patients').then((r) => r.json()).catch(() => ({})),
+        fetch('/api/admin/therapists').then((r) => r.json()).catch(() => ({})),
+        fetch('/api/admin/newsletter').then((r) => r.json()).catch(() => ({})),
       ])
       setBookings(bookingsRes.bookings ?? [])
       setPatientCount((patientsRes.patients ?? []).length)
-      const therapistsRes = await fetch('/api/admin/therapists').then((r) => r.json())
       setTherapists(therapistsRes.therapists ?? [])
+      if (newsletterRes?.stats) {
+        setNewsletterStats({ total: newsletterRes.stats.total ?? 0, active: newsletterRes.stats.active ?? 0 })
+      }
       setLoading(false)
     }
     load()
@@ -96,10 +103,13 @@ export default function AdminDashboard() {
       </header>
 
       <div className="p-6 space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           <StatCard title="Total Bookings" value={totalBookings} icon={Calendar} color="blue" subtitle={`${pendingBookings} pending`} />
           <StatCard title="Active Therapists" value={activeTherapists} icon={UserCheck} color="green" />
           <StatCard title="Total Patients" value={patientCount} icon={Users} color="purple" />
+          <Link href="/admin/newsletter" className="block transition-transform hover:-translate-y-0.5">
+            <StatCard title="Newsletter Subs" value={newsletterStats.total} icon={Mail} color="teal" subtitle={`${newsletterStats.active} active`} />
+          </Link>
           <StatCard title="Revenue (Completed)" value={`₹${revenue.toLocaleString()}`} icon={TrendingUp} color="amber" />
         </div>
 
