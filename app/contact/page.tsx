@@ -335,12 +335,6 @@ function LocationContactSection() {
               </svg>
             </a>
 
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:opacity-70 transition-opacity">
-              <svg width="20" height="24" viewBox="0 0 24 24" fill={colors.primary}>
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z" />
-              </svg>
-            </a>
-
             <a href="mailto:hello@astsankhlam.com" aria-label="Email" className="hover:opacity-70 transition-opacity">
               <svg width="26" height="20" viewBox="0 0 26 20" fill="none"
                 stroke={colors.primary} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -607,16 +601,7 @@ function Footer() {
               >
                 <InstagramIcon size={16} />
               </a>
-              <a
-                href="https://tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90 transition-opacity"
-                aria-label="TikTok"
-                style={{ backgroundColor: colors.primary, color: colors.secondary }}
-              >
-                <TikTokIcon size={16} />
-              </a>
+
               <a
                 href="https://www.linkedin.com/company/astsankhlam"
                 target="_blank"

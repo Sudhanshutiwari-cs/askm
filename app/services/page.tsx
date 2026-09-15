@@ -444,7 +444,6 @@ function Footer() {
             </div>
             <div className="flex gap-2">
               <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="Instagram" style={{ backgroundColor: colors.primary, color: colors.secondary }}><InstagramIcon size={16} /></a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="TikTok" style={{ backgroundColor: colors.primary, color: colors.secondary }}><TikTokIcon size={16} /></a>
               <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="LinkedIn" style={{ backgroundColor: colors.primary, color: colors.secondary }}><LinkedInIcon size={16} /></a>
             </div>
           </div>

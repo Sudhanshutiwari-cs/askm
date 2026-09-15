@@ -216,16 +216,7 @@ function Footer() {
               >
                 <InstagramIcon size={16} />
               </a>
-              <a
-                href="https://tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90 transition-opacity"
-                aria-label="TikTok"
-                style={{ backgroundColor: colors.primary, color: colors.secondary }}
-              >
-                <TikTokIcon size={16} />
-              </a>
+
               <a
                 href="https://www.linkedin.com/company/astsankhlam"
                 target="_blank"
