@@ -145,7 +145,7 @@ function Header() {
                 <InstagramIcon size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/astsankhlam"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -208,7 +208,7 @@ function Header() {
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
                   <InstagramIcon size={20} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
+                <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
                   <LinkedInIcon size={20} />
                 </a>
                 <a href="mailto:hello@astsankhlam.com" aria-label="Email" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
@@ -287,7 +287,7 @@ function Footer() {
                 <TikTokIcon size={16} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/astsankhlam"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90 transition-opacity"
