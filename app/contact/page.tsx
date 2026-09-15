@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
+import { ReelsGallery } from '@/components/public/reels-gallery'
 
 // STRICT COLOR PALETTE
 const colors = {
@@ -503,46 +504,11 @@ function LocationContactSection() {
   )
 }
 
-// Map & Videos Section
+// Reels Section
 function MapAndVideos() {
-  const videos = [
-    { id: 1, caption: "Therapy &\nCounseling", imageSrc: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=500&q=80" },
-    { id: 2, caption: "Yoga for\nMental Health", imageSrc: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80" },
-    { id: 3, caption: "Chakra\nHealing", imageSrc: "https://images.unsplash.com/photo-1600618528240-fb9fc964b853?auto=format&fit=crop&w=500&q=80" },
-    { id: 4, caption: "Mindfulness &\nMeditation", imageSrc: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=500&q=80" },
-    { id: 5, caption: "Breathwork &\nAlignment", imageSrc: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=80" },
-    { id: 6, caption: "A Journey\nInward", imageSrc: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=500&q=80" },
-  ]
-
   return (
     <section className="w-full">
-
-
-      {/* Sanctuary Image Gallery Strip */}
-      <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 overflow-hidden">
-        {videos.map((item) => (
-          <div
-            key={item.id}
-            className="group relative aspect-[9/13] sm:aspect-[9/14] md:aspect-[9/13] overflow-hidden bg-[#66948a]/10"
-          >
-            {item.imageSrc && (
-              <Image
-                src={item.imageSrc}
-                alt={item.caption.replace(/\n/g, " ")}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-            )}
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-3 sm:p-4 transition-all duration-300 group-hover:from-black/85">
-              <p className="text-xs sm:text-sm font-serif text-[#fffdf5] font-semibold tracking-wide drop-shadow-sm leading-snug">
-                {item.caption.replace(/\n/g, " ")}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ReelsGallery />
     </section>
   )
 }

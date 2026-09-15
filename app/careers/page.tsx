@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { HeaderAuthBadge } from '@/components/public/header-auth-badge'
 import { NewsletterForm } from '@/components/public/newsletter-form'
+import { ReelsGallery } from '@/components/public/reels-gallery'
 import type { CSSProperties } from "react"
 
 // STRICT COLOR PALETTE
@@ -672,29 +673,8 @@ export default function AstsankhlamPage() {
       <CareersContent />
 
       {/* Sanctuary Image Gallery Strip */}
-      <section
-        className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 overflow-hidden"
-        aria-label="Therapy sanctuary gallery"
-      >
-        {reels.map((item, i) => (
-          <div
-            key={i}
-            className="group relative aspect-[9/13] sm:aspect-[9/14] md:aspect-[9/13] overflow-hidden bg-[#66948a]/10"
-          >
-            <Image
-              src={item.src}
-              alt={item.alt}
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-3 sm:p-4 transition-all duration-300 group-hover:from-black/85">
-              <p className="text-xs sm:text-sm font-serif text-[#fffdf5] font-semibold tracking-wide drop-shadow-sm leading-snug">
-                {item.alt}
-              </p>
-            </div>
-          </div>
-        ))}
+      <section className="w-full overflow-hidden" aria-label="Therapy sanctuary gallery">
+        <ReelsGallery />
       </section>
 
       {/* Footer */}
