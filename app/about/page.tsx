@@ -395,23 +395,21 @@ export default function AstsankhlamPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] items-center">
-        {/* Left column - sanctuary image */}
-        <div className="flex items-center justify-center p-6 sm:p-8 lg:p-12 xl:p-14 w-full h-full" style={{ backgroundColor: 'rgba(102, 148, 138, 0.05)' }}>
-          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-[1092/1440] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-black/5 bg-[#f6f3eb]">
-            <Image
-              src="https://res.cloudinary.com/doficc2yl/image/upload/v1789452549/20260814_182755_0000.jpg_mv7oq3.jpg"
-              alt="Astsankhlam - Find the right support for your healing journey"
-              fill
-              priority
-              sizes="(max-width: 1024px) 95vw, 50vw"
-              className="object-contain"
-            />
-          </div>
+      <section className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden" style={{ backgroundColor: colors.secondary }}>
+        {/* Left column - hero image */}
+        <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[580px] overflow-hidden bg-[#f6f3eb]">
+          <Image
+            src="https://res.cloudinary.com/doficc2yl/image/upload/v1789452549/20260814_182755_0000.jpg_mv7oq3.jpg"
+            alt="Astsankhlam - Find the right support for your healing journey"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-top"
+          />
         </div>
 
         {/* Right column - structured editorial content */}
-        <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-14 xl:px-16 py-12 sm:py-16 lg:py-12 text-left" style={{ backgroundColor: colors.secondary }}>
+        <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-12 xl:px-16 py-10 sm:py-12 lg:py-14 text-left">
           <div
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full w-fit mb-5 border text-xs sm:text-sm tracking-wider uppercase font-semibold"
             style={{
