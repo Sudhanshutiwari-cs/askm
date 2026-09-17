@@ -476,17 +476,16 @@ function Footer() {
         <div className="grid gap-8 sm:gap-12 md:grid-cols-3 lg:gap-16">
           {/* Left Column - Logo and Social */}
           <div className="flex flex-col gap-6 sm:gap-8 items-center md:items-start">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="relative h-12 w-12 sm:h-14 sm:w-14 overflow-hidden rounded-lg">
+            <div className="flex items-center">
+              <div className="relative h-14 w-14 sm:h-16 sm:w-16">
                 <Image
                   src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png"
                   alt="Astsankhlam logo"
-                  width={56}
-                  height={56}
+                  width={64}
+                  height={64}
                   className="object-contain"
                 />
               </div>
-              <span className="font-serif text-lg sm:text-xl font-bold" style={{ color: colors.primary }}>Astsankhlam</span>
             </div>
 
             <div className="flex gap-2">

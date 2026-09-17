@@ -113,23 +113,15 @@ function LoginForm() {
 
         {/* Top brand header */}
         <div className="relative z-10">
-          <Link href="/" className="inline-flex items-center gap-3 group">
-            <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-white/15 p-1 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+          <Link href="/" className="inline-flex items-center group" aria-label="Astsankhlam">
+            <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl bg-white/15 p-1.5 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png"
                 alt="Astsankhlam logo"
-                width={36}
-                height={36}
-                className="object-contain"
+                width={56}
+                height={56}
+                className="object-contain w-full h-full"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-tight text-[#fffdf5]">
-                Astsankhlam
-              </span>
-              <span className="text-[10px] font-medium tracking-wider uppercase text-[#fffdf5]/75">
-                Holistic Wellness Initiative
-              </span>
             </div>
           </Link>
         </div>
@@ -221,17 +213,14 @@ function LoginForm() {
           </Link>
 
           {/* Mobile Logo View */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center">
             <Image
               src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png"
               alt="Astsankhlam logo"
-              width={28}
-              height={28}
+              width={36}
+              height={36}
               className="object-contain"
             />
-            <span className="font-serif font-bold text-sm" style={{ color: '#66948a' }}>
-              Astsankhlam
-            </span>
           </div>
         </div>
 

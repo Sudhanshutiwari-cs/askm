@@ -416,11 +416,10 @@ function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 sm:gap-12 md:grid-cols-3 lg:gap-16">
           <div className="flex flex-col gap-6 sm:gap-8 items-center md:items-start">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="relative h-12 w-12 sm:h-14 sm:w-14 overflow-hidden rounded-lg">
-                <Image src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png" alt="Astsankhlam logo" width={56} height={56} className="object-contain" />
+            <div className="flex items-center">
+              <div className="relative h-14 w-14 sm:h-16 sm:w-16">
+                <Image src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png" alt="Astsankhlam logo" width={64} height={64} className="object-contain" />
               </div>
-              <span className="font-serif text-lg sm:text-xl font-bold" style={{ color: colors.primary }}>Astsankhlam</span>
             </div>
             <div className="flex gap-2">
               <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded hover:opacity-90" aria-label="Instagram" style={{ backgroundColor: colors.primary, color: colors.secondary }}><InstagramIcon size={16} /></a>

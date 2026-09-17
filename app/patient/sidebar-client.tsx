@@ -38,12 +38,9 @@ export default function PatientSidebarClient({ userName, userEmail }: { userName
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
-      <div className="flex items-center gap-3 px-5 py-5 border-b border-sidebar-border">
-        <Image src="/logo.png" alt="Astsankhlam logo" width={32} height={32} className="rounded-lg object-contain flex-shrink-0" />
-        <div className="min-w-0">
-          <div className="font-bold text-sm text-sidebar-foreground leading-tight">Astsankhlam</div>
-          <div className="text-xs text-muted-foreground truncate">Patient Portal</div>
-        </div>
+      <div className="flex items-center gap-3 px-5 py-4 border-b border-sidebar-border">
+        <Image src="/logo.png" alt="Astsankhlam logo" width={36} height={36} className="rounded-lg object-contain flex-shrink-0" />
+        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Patient Portal</span>
       </div>
 
       <nav className="flex-1 py-4 px-3 overflow-y-auto">

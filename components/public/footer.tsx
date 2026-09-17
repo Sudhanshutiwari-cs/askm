@@ -7,9 +7,8 @@ export function PublicFooter() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <Image src="/logo.png" alt="Astsankhlam logo" width={36} height={36} className="rounded-lg object-contain" />
-              <span className="font-bold text-lg">Astsankhlam</span>
+            <div className="flex items-center mb-4">
+              <Image src="/logo.png" alt="Astsankhlam logo" width={44} height={44} className="rounded-lg object-contain" />
             </div>
             <p className="text-blue-200 text-sm leading-relaxed max-w-xs">
               Restore Your Mind. Reconnect With Yourself. Rediscover Balance. A holistic wellness initiative founded by Dipanita Biswas.

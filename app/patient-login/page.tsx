@@ -26,7 +26,7 @@ function PatientLoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const rawNext = searchParams.get('next')
-  const nextParam = rawNext && !rawNext.includes('login') && !rawNext.includes('sign-up') ? rawNext : null
+  const nextParam = rawNext && !rawNext.includes('login') && !rawNext.includes('sign-up') && !rawNext.startsWith('/admin') ? rawNext : null
 
   const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
@@ -86,23 +86,15 @@ function PatientLoginForm() {
 
         {/* Top brand header */}
         <div className="relative z-10">
-          <Link href="/" className="inline-flex items-center gap-3 group">
-            <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-white/15 p-1 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+          <Link href="/" className="inline-flex items-center group" aria-label="Astsankhlam">
+            <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl bg-white/15 p-1.5 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png"
                 alt="Astsankhlam logo"
-                width={36}
-                height={36}
-                className="object-contain"
+                width={56}
+                height={56}
+                className="object-contain w-full h-full"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-tight text-[#fffdf5]">
-                Astsankhlam
-              </span>
-              <span className="text-[10px] font-medium tracking-wider uppercase text-[#fffdf5]/75">
-                Patient & Client Portal
-              </span>
             </div>
           </Link>
         </div>
@@ -161,9 +153,7 @@ function PatientLoginForm() {
         {/* Bottom footnote */}
         <div className="relative z-10 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-[#fffdf5]/70">
           <span>© 2026 Astsankhlam</span>
-          <Link href="/auth/login" className="hover:underline">
-            Admin or Staff? Click here
-          </Link>
+          <span>Founder: Dipanita Biswas</span>
         </div>
       </div>
 
@@ -178,13 +168,6 @@ function PatientLoginForm() {
           >
             <ArrowLeft className="w-4 h-4" />
             Back to website
-          </Link>
-
-          <Link
-            href="/auth/login"
-            className="text-xs sm:text-sm font-medium hover:underline text-[#1a1a1a]/70"
-          >
-            Admin Sign In →
           </Link>
         </div>
 
