@@ -69,10 +69,10 @@ export function NewsletterForm({
           disabled={loading}
           className={`${
             layout === 'col' ? 'w-fit' : 'w-full sm:w-fit'
-          } rounded-lg px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold lowercase transition-colors hover:opacity-90 disabled:opacity-50`}
+          } rounded-lg px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold transition-colors hover:opacity-90 disabled:opacity-50`}
           style={{ backgroundColor: primaryColor, color: secondaryColor }}
         >
-          {loading ? 'signing up...' : 'sign up'}
+          {loading ? 'Signing Up...' : 'Sign Up'}
         </button>
       </form>
       {status && (

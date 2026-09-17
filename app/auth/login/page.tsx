@@ -478,7 +478,7 @@ function LoginForm() {
             <p className="mt-6 text-center text-xs sm:text-sm text-[#1a1a1a]/70">
               Don&apos;t have an account yet?{' '}
               <Link href="/auth/sign-up" className="text-[#66948a] font-semibold hover:underline">
-                Create patient account
+                Create Patient Account
               </Link>
             </p>
           )}

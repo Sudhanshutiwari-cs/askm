@@ -60,27 +60,27 @@ export default function SignUpPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Create your account</h1>
-          <p className="text-muted-foreground mt-1">Join Astsankhlam as a patient</p>
+          <h1 className="text-2xl font-bold text-foreground">Create Your Account</h1>
+          <p className="text-muted-foreground mt-1">Join Astsankhlam as a Patient</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <Label htmlFor="first_name">First name</Label>
+              <Label htmlFor="first_name">First Name</Label>
               <Input id="first_name" name="first_name" placeholder="John" required />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="last_name">Last name</Label>
+              <Label htmlFor="last_name">Last Name</Label>
               <Input id="last_name" name="last_name" placeholder="Doe" required />
             </div>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="email">Email address</Label>
+            <Label htmlFor="email">Email Address</Label>
             <Input id="email" name="email" type="email" placeholder="you@example.com" required />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="phone">Phone number</Label>
+            <Label htmlFor="phone">Phone Number</Label>
             <Input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
           </div>
           <div className="space-y-1.5">
@@ -95,14 +95,14 @@ export default function SignUpPage() {
           )}
 
           <Button type="submit" className="w-full bg-[#66948a] hover:bg-[#4d7068] text-white" disabled={loading}>
-            {loading ? 'Creating account...' : 'Create account'}
+            {loading ? 'Creating Account...' : 'Create Account'}
           </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Already have an account?{' '}
           <Link href="/auth/login" className="text-[#66948a] font-medium hover:underline">
-            Sign in
+            Sign In
           </Link>
         </p>
 

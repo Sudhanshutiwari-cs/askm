@@ -32,9 +32,8 @@ export function PublicNavbar() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="Astsankhlam logo" width={36} height={36} className="rounded-lg object-contain" />
-          <span className={`font-bold text-lg ${scrolled ? 'text-foreground' : 'text-white'}`}>Astsankhlam</span>
+        <Link href="/" className="flex items-center flex-shrink-0" aria-label="Astsankhlam">
+          <Image src="/logo.png" alt="Astsankhlam logo" width={52} height={52} className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform duration-200 hover:scale-105" />
         </Link>
 
         {/* Desktop links */}
@@ -56,7 +55,7 @@ export function PublicNavbar() {
           <HeaderAuthBadge primaryColor="#66948a" />
           <Link href="/auth/login">
             <Button variant="ghost" size="sm" className={scrolled ? '' : 'text-white hover:text-white hover:bg-white/10'}>
-              Sign in
+              Sign In
             </Button>
           </Link>
           <Link href="/book">
@@ -95,7 +94,7 @@ export function PublicNavbar() {
           <div className="flex flex-col gap-2 pt-2 border-t border-border">
             <HeaderAuthBadge primaryColor="#66948a" isMobile onNavigate={() => setMobileOpen(false)} />
             <Link href="/auth/login" onClick={() => setMobileOpen(false)}>
-              <Button variant="ghost" size="sm" className="w-full">Sign in</Button>
+              <Button variant="ghost" size="sm" className="w-full">Sign In</Button>
             </Link>
             <Link href="/book" onClick={() => setMobileOpen(false)}>
               <Button size="sm" className="w-full bg-[#66948a] hover:bg-[#4d7068] text-white">Book Appointment</Button>

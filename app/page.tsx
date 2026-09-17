@@ -110,85 +110,50 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 shadow-sm" style={{ backgroundColor: colors.secondary }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3 sm:py-4 md:py-6">
+        <div className="flex items-center justify-between py-2 sm:py-3 md:py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            <div className="relative h-8 w-8 sm:h-10 sm:w-10 overflow-hidden rounded-full">
+          <Link href="/" className="flex items-center flex-shrink-0" aria-label="Astsankhlam">
+            <div className="relative h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 transition-transform duration-200 hover:scale-105">
               <Image
                 src="https://res.cloudinary.com/df01whs60/image/upload/v1781904502/logo_1_ffsttc.png"
                 alt="Astsankhlam logo"
-                width={40}
-                height={40}
+                width={80}
+                height={80}
                 priority
-                className="object-contain"
+                className="h-full w-full object-contain"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-lg sm:text-xl md:text-2xl font-black tracking-tight leading-tight" style={{ color: colors.primary }}>
-                Astsankhlam
-              </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link href="/about" className="text-sm font-medium hover:opacity-80 transition-colors whitespace-nowrap" style={{ color: colors.foreground }}>
-              about
+              About
             </Link>
             <Link href="/services" className="text-sm font-medium hover:opacity-80 transition-colors whitespace-nowrap" style={{ color: colors.foreground }}>
-              services
+              Services
             </Link>
             <Link href="/contact" className="text-sm font-medium hover:opacity-80 transition-colors whitespace-nowrap" style={{ color: colors.foreground }}>
-              contact
+              Contact
             </Link>
             <Link href="/careers" className="text-sm font-medium hover:opacity-80 transition-colors whitespace-nowrap" style={{ color: colors.foreground }}>
-              careers
+              Careers
             </Link>
           
             <Link href="/blog" className="text-sm font-medium hover:opacity-80 transition-colors whitespace-nowrap" style={{ color: colors.foreground }}>
-              blog
+              Blog
             </Link>
           </nav>
 
           {/* Desktop Right Section */}
           <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-            <div className="flex items-center gap-3 xl:gap-4">
-              <a
-                href="https://www.instagram.com/astsankhlam/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="hover:opacity-80 transition-colors"
-                style={{ color: colors.foreground }}
-              >
-                <InstagramIcon size={20} />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/astsankhlam"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="hover:opacity-80 transition-colors"
-                style={{ color: colors.foreground }}
-              >
-                <LinkedInIcon size={20} />
-              </a>
-              <a
-                href="mailto:hello@astsankhlam.com"
-                aria-label="Email"
-                className="hover:opacity-80 transition-colors"
-                style={{ color: colors.foreground }}
-              >
-                <EmailIcon size={20} />
-              </a>
-            </div>
             <HeaderAuthBadge primaryColor={colors.primary} />
             <Link
               href="/book"
-              className="rounded-lg px-4 xl:px-6 py-2.5 xl:py-3 text-sm font-semibold lowercase tracking-wide transition-colors hover:opacity-90 whitespace-nowrap"
+              className="rounded-lg px-4 xl:px-6 py-2.5 xl:py-3 text-sm font-semibold tracking-wide transition-colors hover:opacity-90 whitespace-nowrap"
               style={{ backgroundColor: colors.primary, color: colors.secondary }}
             >
-              book now
+              Book Now
             </Link>
           </div>
 
@@ -208,41 +173,30 @@ function Header() {
           <div className="lg:hidden border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.1)' }}>
             <nav className="flex flex-col py-4 space-y-3">
               <Link href="/about" className="text-sm font-medium py-2 hover:opacity-80 transition-colors" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>
-                about
+                About
               </Link>
               <Link href="/services" className="text-sm font-medium py-2 hover:opacity-80 transition-colors" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>
-                services
+                Services
               </Link>
               <Link href="/contact" className="text-sm font-medium py-2 hover:opacity-80 transition-colors" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>
-                contact
+                Contact
               </Link>
               <Link href="/careers" className="text-sm font-medium py-2 hover:opacity-80 transition-colors" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>
-                careers
+                Careers
               </Link>
              
               <Link href="/blog" className="text-sm font-medium py-2 hover:opacity-80 transition-colors" style={{ color: colors.foreground }} onClick={() => setIsMenuOpen(false)}>
-                blog
+                Blog
               </Link>
-              <div className="flex items-center gap-4 pt-3 border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.1)' }}>
-                <a href="https://www.instagram.com/astsankhlam/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
-                  <InstagramIcon size={20} />
-                </a>
-                <a href="https://www.linkedin.com/company/astsankhlam" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
-                  <LinkedInIcon size={20} />
-                </a>
-                <a href="mailto:hello@astsankhlam.com" aria-label="Email" className="hover:opacity-80 transition-colors" style={{ color: colors.foreground }}>
-                  <EmailIcon size={20} />
-                </a>
-              </div>
-              <div className="flex flex-col gap-2 mt-2">
+              <div className="flex flex-col gap-2 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(26, 26, 26, 0.1)' }}>
                 <HeaderAuthBadge primaryColor={colors.primary} isMobile onNavigate={() => setIsMenuOpen(false)} />
                 <Link
                   href="/book"
-                  className="rounded-lg px-6 py-3 text-sm font-semibold lowercase tracking-wide transition-colors hover:opacity-90 w-full text-center block"
+                  className="rounded-lg px-6 py-3 text-sm font-semibold tracking-wide transition-colors hover:opacity-90 w-full text-center block"
                   style={{ backgroundColor: colors.primary, color: colors.secondary }}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  book now
+                  Book Now
                 </Link>
               </div>
             </nav>
@@ -255,22 +209,22 @@ function Header() {
 
 const features = [
   {
-    title: 'real & relatable',
+    title: 'Real & Relatable',
     description:
-      'We prioritize showing up as ourselves, and we want you to feel safe enough to do the same! We are humans first and therapists second- if you wouldn’t want us to be your friend, why would you want us to be your therapist?!',
+      'We prioritize showing up as ourselves, and we want you to feel safe enough to do the same! We are humans first and therapists second- if you wouldn’t want us to be your therapist, why would you want us to be your therapist?!',
   },
   {
-    title: 'humor & humility',
+    title: 'Humor & Humility',
     description:
       'We approach our sessions with warmth and a sense of humor, recognizing that while the work may be hard, it doesn’t always have to be heavy. At the same time, we stay grounded in humility, knowing that healing is a journey we walk together, and your unique experience always deserves respect, understanding, and care.',
   },
   {
-    title: 'trained & tested',
+    title: 'Trained & Tested',
     description:
       'Our therapists have truly done the work; with many hours of training, supervision and evidence-based models to pull from, you’ll have all the benefits of pro therapy without the confusing jargon.',
   },
   {
-    title: 'client-centered care',
+    title: 'Client-Centered Care',
     description:
       'Experience client-centered care with our therapists, where your needs and preferences are prioritized throughout the healing process.',
   },
@@ -391,10 +345,10 @@ function Footer() {
           </p>
           <Link
             href="/book"
-            className="rounded-lg px-6 sm:px-8 py-3 sm:py-4 text-sm font-semibold lowercase transition-colors hover:opacity-90 inline-block"
+            className="rounded-lg px-6 sm:px-8 py-3 sm:py-4 text-sm font-semibold transition-colors hover:opacity-90 inline-block"
             style={{ backgroundColor: colors.primary, color: colors.secondary }}
           >
-            book now
+            Book Now
           </Link>
         </div>
 
@@ -464,10 +418,10 @@ export default function AstsankhlamPage() {
 
             <a
               href="/services"
-              className="mt-6 sm:mt-8 md:mt-10 inline-flex items-center justify-center rounded-2xl px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-semibold lowercase tracking-wide transition-opacity hover:opacity-90"
+              className="mt-6 sm:mt-8 md:mt-10 inline-flex items-center justify-center rounded-2xl px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-semibold tracking-wide transition-opacity hover:opacity-90"
               style={{ backgroundColor: colors.primary, color: colors.secondary }}
             >
-              explore our services
+              Explore Our Services
             </a>
           </div>
         </div>
@@ -481,7 +435,7 @@ export default function AstsankhlamPage() {
                 className="mx-4 sm:mx-6 md:mx-8 font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold"
                 style={{ color: colors.secondary }}
               >
-                healing Together
+                Healing Together
               </span>
             ))}
           </div>
@@ -582,17 +536,17 @@ export default function AstsankhlamPage() {
                   <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                     <Link
                       href="/services"
-                      className="w-full sm:w-auto rounded-md px-5 sm:px-6 py-2 sm:py-2.5 text-center text-xs sm:text-sm font-medium lowercase transition-opacity hover:opacity-90"
+                      className="w-full sm:w-auto rounded-md px-5 sm:px-6 py-2 sm:py-2.5 text-center text-xs sm:text-sm font-medium transition-opacity hover:opacity-90"
                       style={{ backgroundColor: colors.primary, color: colors.secondary }}
                     >
-                      learn more
+                      Learn More
                     </Link>
               <Link
                 href="/book"
-                className="w-full sm:w-auto rounded-md px-5 sm:px-6 py-2 sm:py-2.5 text-center text-xs sm:text-sm font-medium lowercase transition-opacity hover:opacity-90"
+                className="w-full sm:w-auto rounded-md px-5 sm:px-6 py-2 sm:py-2.5 text-center text-xs sm:text-sm font-medium transition-opacity hover:opacity-90"
                 style={{ backgroundColor: colors.primary, color: colors.secondary }}
               >
-                book now
+                Book Now
               </Link>
                   </div>
                 </article>
@@ -631,11 +585,11 @@ export default function AstsankhlamPage() {
           <div className="mt-12 sm:mt-16 flex justify-center">
             <button
               type="button"
-              className="rounded-full px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm font-semibold lowercase tracking-wide transition-colors hover:opacity-90"
+              className="rounded-full px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm font-semibold tracking-wide transition-colors hover:opacity-90"
               style={{ backgroundColor: colors.primary, color: colors.secondary }}
               onClick={() => { window.location.href = '/book' }}
             >
-              book now
+              Book Now
             </button>
           </div>
         </div>
@@ -669,10 +623,10 @@ export default function AstsankhlamPage() {
             <div className="mt-8 sm:mt-10 md:mt-12 flex justify-center">
               <Link
                 href="/book"
-                className="rounded-2xl px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold lowercase tracking-wide transition-colors hover:opacity-90 inline-block"
+                className="rounded-2xl px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold tracking-wide transition-colors hover:opacity-90 inline-block"
                 style={{ backgroundColor: colors.primary, color: colors.secondary }}
               >
-                book now!
+                Book Now
               </Link>
             </div>
           </div>
