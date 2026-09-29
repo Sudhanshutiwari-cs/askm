@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
   LayoutDashboard, CalendarCheck, Calendar, LogOut, Bell,
-  UserCircle, History, ChevronRight, Menu, X,
+  UserCircle, History, ChevronRight, Menu, X, LifeBuoy
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
@@ -17,7 +17,8 @@ const nav = [
   { label: 'Dashboard', href: '/patient', icon: LayoutDashboard },
   { label: 'My Bookings', href: '/patient/bookings', icon: CalendarCheck },
   { label: 'Book Session', href: '/book', icon: Calendar },
-  { label: 'History', href: '/patient/history', icon: History },
+  { label: 'History & Reports', href: '/patient/history', icon: History },
+  { label: 'Help & Support', href: '/patient/helpline', icon: LifeBuoy },
   { label: 'Notifications', href: '/patient/notifications', icon: Bell },
   { label: 'My Profile', href: '/patient/profile', icon: UserCircle },
 ]

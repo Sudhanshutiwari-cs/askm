@@ -4,9 +4,20 @@ import { NextResponse } from 'next/server'
 import crypto from 'crypto'
 import { format } from 'date-fns'
 
-function generateUsername(name: string): string {
-  const letters = name.replace(/[^a-zA-Z]/g, '').slice(0, 4).toUpperCase().padEnd(4, 'X')
-  return `${letters}ASKM`
+async function generateUniquePatientUsername(name: string, supabase: any): Promise<string> {
+  const base = name.replace(/[^a-zA-Z]/g, '').slice(0, 4).toUpperCase().padEnd(4, 'X')
+  let candidate = `${base}ASKM`
+  let counter = 1
+  while (true) {
+    const { data } = await supabase
+      .from('patients')
+      .select('id')
+      .ilike('username', candidate)
+      .maybeSingle()
+    if (!data) return candidate
+    candidate = `${base}${counter}ASKM`
+    counter++
+  }
 }
 
 function generateRef(): string {
@@ -19,7 +30,7 @@ function generateMeetLink(bookingRef: string): string {
 
 async function createPatientAccount(name: string, email: string, phone: string | null) {
   const supabase = createAdminClient()
-  const username = generateUsername(name)
+  const username = await generateUniquePatientUsername(name, supabase)
   const password = username
   const parts = name.trim().split(/\s+/)
   const firstName = parts[0]
@@ -74,7 +85,7 @@ export async function POST(request: Request) {
 
   const { data: therapist, error: therapistError } = await supabase
     .from('therapists')
-    .select('first_name, last_name, consultation_fee')
+    .select('first_name, last_name, consultation_fee, session_count')
     .eq('id', payload.therapistId)
     .eq('is_active', true)
     .single()
@@ -156,6 +167,41 @@ export async function POST(request: Request) {
       payment_method: 'razorpay',
     })
   }
+
+  // Phase 2: Link intake if intakeId or intakeData provided
+  if (payload.intakeId) {
+    await supabase
+      .from('client_intakes')
+      .update({
+        booking_id: booking.id,
+        patient_id: patientId,
+        selected_therapist_id: payload.therapistId,
+      })
+      .eq('id', payload.intakeId)
+  } else if (payload.intakeData) {
+    await supabase
+      .from('client_intakes')
+      .insert({
+        booking_id: booking.id,
+        patient_id: patientId,
+        client_name: payload.patientName,
+        client_email: payload.patientEmail,
+        client_phone: payload.patientPhone || null,
+        support_tier: payload.intakeData.supportTier || 'professional',
+        primary_concerns: payload.intakeData.primaryConcerns || [],
+        distress_duration: payload.intakeData.distressDuration || null,
+        prior_therapy_experience: payload.intakeData.priorTherapyExperience || null,
+        preferred_language: payload.intakeData.preferredLanguage || 'English',
+        preferred_gender: payload.intakeData.preferredGender || 'any',
+        selected_therapist_id: payload.therapistId,
+      })
+  }
+
+  // Increment therapist session count
+  try {
+    const currentCount = therapist.session_count || 0
+    await supabase.from('therapists').update({ session_count: currentCount + 1 }).eq('id', payload.therapistId)
+  } catch {}
 
   let appointmentDate = payload.date
   try {

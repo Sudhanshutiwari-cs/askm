@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import {
   LayoutDashboard, Users, CalendarCheck, Settings,
   LogOut, Heart, BarChart3, Menu, X, ChevronRight, BookOpen, Mail, MessageSquare, Film, Image as LucideImage,
+  UserCheck, RefreshCw, LifeBuoy, GraduationCap,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
@@ -16,7 +17,11 @@ import { useState } from 'react'
 const nav = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
+  { label: 'Applications', href: '/admin/applications', icon: UserCheck },
   { label: 'Therapists', href: '/admin/therapists', icon: Users },
+  { label: 'Re-Matches', href: '/admin/rematches', icon: RefreshCw },
+  { label: 'Helpline & Quality', href: '/admin/tickets', icon: LifeBuoy },
+  { label: 'Workshops', href: '/admin/workshops', icon: GraduationCap },
   { label: 'Patients', href: '/admin/patients', icon: Heart },
   { label: 'Blogs', href: '/admin/blogs', icon: BookOpen },
   { label: 'Hero Images', href: '/admin/heroes', icon: LucideImage },

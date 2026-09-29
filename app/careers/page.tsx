@@ -433,11 +433,11 @@ function CareersContent() {
       <div className="relative mx-auto flex max-w-[1180px] flex-col items-center px-4 sm:px-6 pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 md:pb-24">
         {/* Badge button */}
         <Link
-          href="/contact"
+          href="/apply"
           className="z-10 w-full max-w-[420px] px-4 sm:px-6 py-3 sm:py-4 text-center font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] shadow-sm transition-colors hover:opacity-90 inline-block"
           style={{ backgroundColor: colors.primary, color: colors.secondary }}
         >
-          Join The Astsankhlam Collective
+          Apply to Join The Collective
         </Link>
 
         {/* Overlapping rounded card */}

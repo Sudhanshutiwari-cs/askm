@@ -130,7 +130,7 @@ export default function AdminAnalyticsPage() {
                 ) : (
                   <ResponsiveContainer width="100%" height={200}>
                     <PieChart>
-                      <Pie data={statusData} cx="50%" cy="50%" outerRadius={75} dataKey="value" label={({ name, percent }) => `${name} ${Math.round(percent * 100)}%`} labelLine={false}>
+                      <Pie data={statusData} cx="50%" cy="50%" outerRadius={75} dataKey="value" label={({ name, percent }: { name?: string; percent?: number }) => `${name ?? ''} ${Math.round((percent ?? 0) * 100)}%`} labelLine={false}>
                         {statusData.map((entry) => (
                           <Cell key={entry.name} fill={STATUS_COLORS[entry.name] ?? '#94a3b8'} />
                         ))}

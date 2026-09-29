@@ -98,7 +98,7 @@ export default function TherapistAppointmentsPage() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input placeholder="Search patient, email or ref..." className="pl-9" value={search} onChange={(e) => setSearch(e.target.value)} />
               </div>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <Select value={statusFilter} onValueChange={(val) => setStatusFilter(val ?? 'all')}>
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="All statuses" />
                 </SelectTrigger>
@@ -162,7 +162,7 @@ export default function TherapistAppointmentsPage() {
                             )}
                           </td>
                           <td className="px-4 py-3">
-                            <Select value={b.status} onValueChange={(val) => updateStatus(b.id, val)} disabled={updating === b.id}>
+                            <Select value={b.status} onValueChange={(val) => { if (val) updateStatus(b.id, val) }} disabled={updating === b.id}>
                               <SelectTrigger className="h-7 text-xs w-32">
                                 <SelectValue />
                               </SelectTrigger>
